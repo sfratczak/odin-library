@@ -35,6 +35,24 @@
           <tbody></tbody>
         </table>
         <button class="addnew-mybooks">Add New</button>
+        <div id="modal-addbook" class="modal">
+          <div class="modal-content">
+            <h2>New Book</h2>
+            <form action="post">
+              <label for="newbook-name">Name</label
+              ><input type="text" name="name" id="newbook-name" />
+              <label for="newbook-author">Author</label
+              ><input type="text" name="author" id="newbook-author" />
+              <label for="newbook-genre">Genre</label
+              ><input type="text" name="genre" id="newbook-genre" />
+              <label for="newbook-pages">Pages</label
+              ><input type="tel" name="pages" id="newbook-pages" />
+              <label for="newbook-read">Read</label
+              ><input type="checkbox" name="read" id="newbook-read" checked />
+              <button class="newbook-submit">Add New</button>
+            </form>
+          </div>
+        </div>
       </main>
     </div>
   </body>
