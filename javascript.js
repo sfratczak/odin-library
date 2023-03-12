@@ -16,7 +16,15 @@ function addBookToLibrary(title, author, genre, pages, read) {
 function addBooksToTable(table, library) {
   library.forEach((book) => {
     const bookObjectValues = Object.values(book);
-    const tableRowElements = [document.createElement("td")];
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.setAttribute("headers", "remove-book");
+
+    const deleteButtonCell = document
+      .createElement("td")
+      .appendChild(deleteButton);
+    const tableRowElements = [deleteButtonCell];
 
     for (let i = 0; i < bookObjectValues.length; i += 1) {
       const element = document.createElement("td");
