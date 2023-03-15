@@ -1,4 +1,5 @@
 const myBooksTableBody = document.querySelector("tbody");
+const newBookFormSubmit = document.getElementById("newbook-submit");
 const myLibrary = [];
 
 function Book(title, author, genre, pages, read) {
@@ -37,13 +38,26 @@ function addBooksToTable(table, library) {
   });
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "Fantasy", 295, true);
-addBookToLibrary(
-  "Project Hail Mary",
-  "Andy Weir",
-  "Science Fiction",
-  476,
-  false
-);
+function recoverFormData() {
+  const newBookFormTitleVal = document.getElementById("newbook-title").value;
+  const newBookFormAuthorVal = document.getElementById("newbook-author").value;
+  const newBookFormGenreVal = document.getElementById("newbook-genre").value;
+  const newBookFormPagesVal = document.getElementById("newbook-pages").value;
+  const newBookFormReadBool = document.getElementById("newbook-read").checked;
 
-addBooksToTable(myBooksTableBody, myLibrary);
+  const newBookData = [
+    newBookFormTitleVal,
+    newBookFormAuthorVal,
+    newBookFormGenreVal,
+    newBookFormPagesVal,
+    newBookFormReadBool,
+  ];
+
+  return newBookData;
+}
+
+newBookFormSubmit.addEventListener("click", (e) => {
+  addBookToLibrary(...recoverFormData());
+  addBooksToTable(myBooksTableBody, myLibrary);
+  e.preventDefault();
+});

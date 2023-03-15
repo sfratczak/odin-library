@@ -25,7 +25,7 @@
           <thead>
             <tr>
               <th id="remove-book"></th>
-              <th scope="col">Name</th>
+              <th scope="col">Title</th>
               <th scope="col">Author</th>
               <th scope="col">Genre</th>
               <th scope="col">Pages</th>
@@ -39,17 +39,37 @@
           <div class="modal-content">
             <h2>New Book</h2>
             <form action="post">
-              <label for="newbook-name">Name</label
-              ><input type="text" name="name" id="newbook-name" />
+              <label for="newbook-title">Name</label
+              ><input
+                type="text"
+                name="title"
+                id="newbook-title"
+                autocomplete="off"
+                required />
               <label for="newbook-author">Author</label
-              ><input type="text" name="author" id="newbook-author" />
+              ><input
+                type="text"
+                name="author"
+                id="newbook-author"
+                autocomplete="off"
+                required />
               <label for="newbook-genre">Genre</label
-              ><input type="text" name="genre" id="newbook-genre" />
+              ><input
+                type="text"
+                name="genre"
+                id="newbook-genre"
+                autocomplete="off"
+                required />
               <label for="newbook-pages">Pages</label
-              ><input type="tel" name="pages" id="newbook-pages" />
+              ><input
+                type="tel"
+                name="pages"
+                id="newbook-pages"
+                autocomplete="off"
+                required />
               <label for="newbook-read">Read</label
               ><input type="checkbox" name="read" id="newbook-read" checked />
-              <button class="newbook-submit">Add New</button>
+              <button id="newbook-submit">Add New</button>
             </form>
           </div>
         </div>
