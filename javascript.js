@@ -38,6 +38,12 @@ function addBooksToTable(table, library) {
   });
 }
 
+function clearTable(table) {
+  while (table.firstChild) {
+    table.removeChild(table.lastChild);
+  }
+}
+
 function recoverFormData() {
   const newBookFormTitleVal = document.getElementById("newbook-title").value;
   const newBookFormAuthorVal = document.getElementById("newbook-author").value;
@@ -58,6 +64,9 @@ function recoverFormData() {
 
 newBookFormSubmit.addEventListener("click", (e) => {
   addBookToLibrary(...recoverFormData());
+
+  clearTable(myBooksTableBody);
   addBooksToTable(myBooksTableBody, myLibrary);
+
   e.preventDefault();
 });
