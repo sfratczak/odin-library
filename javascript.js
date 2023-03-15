@@ -25,6 +25,7 @@ function addBooksToTable(table, library) {
     const deleteButtonCell = document
       .createElement("td")
       .appendChild(deleteButton);
+
     const tableRowElements = [deleteButtonCell];
 
     for (let i = 0; i < bookObjectValues.length; i += 1) {
@@ -34,7 +35,11 @@ function addBooksToTable(table, library) {
       tableRowElements.push(element);
     }
 
-    table.appendChild(document.createElement("tr")).append(...tableRowElements);
+    const tableRow = document.createElement("tr");
+    tableRow.setAttribute("data-index-number", library.indexOf(book));
+    tableRow.append(...tableRowElements);
+
+    table.appendChild(tableRow);
   });
 }
 
@@ -44,7 +49,7 @@ function clearTable(table) {
   }
 }
 
-function recoverFormData() {
+function recoverNewBookFormData() {
   const newBookFormTitleVal = document.getElementById("newbook-title").value;
   const newBookFormAuthorVal = document.getElementById("newbook-author").value;
   const newBookFormGenreVal = document.getElementById("newbook-genre").value;
@@ -63,7 +68,7 @@ function recoverFormData() {
 }
 
 newBookFormSubmit.addEventListener("click", (e) => {
-  addBookToLibrary(...recoverFormData());
+  addBookToLibrary(...recoverNewBookFormData());
 
   clearTable(myBooksTableBody);
   addBooksToTable(myBooksTableBody, myLibrary);
