@@ -14,13 +14,38 @@ function addBookToLibrary(title, author, genre, pages, read) {
   myLibrary.push(new Book(title, author, genre, pages, read));
 }
 
-function addBooksToTable(table, library) {
+function removeArrayItem(array, index) {
+  if (array[index]) {
+    array.splice(index, 1);
+  } else {
+    alert("Cannot delete book: Index out of range.");
+  }
+}
+
+function clearTable(table) {
+  while (table.firstChild) {
+    table.removeChild(table.lastChild);
+  }
+}
+
+function deleteBookFromLibrary() {
+  const bookIndex = this.parentNode.getAttribute("data-index-number");
+
+  removeArrayItem(myLibrary, bookIndex);
+
+  clearTable(myBooksTableBody);
+  // eslint-disable-next-line no-use-before-define
+  fillTable(myBooksTableBody, myLibrary);
+}
+
+function fillTable(table, library) {
   library.forEach((book) => {
     const bookObjectValues = Object.values(book);
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
     deleteButton.setAttribute("headers", "remove-book");
+    deleteButton.addEventListener("click", deleteBookFromLibrary);
 
     const deleteButtonCell = document
       .createElement("td")
@@ -41,12 +66,6 @@ function addBooksToTable(table, library) {
 
     table.appendChild(tableRow);
   });
-}
-
-function clearTable(table) {
-  while (table.firstChild) {
-    table.removeChild(table.lastChild);
-  }
 }
 
 function recoverNewBookFormData() {
@@ -71,7 +90,7 @@ newBookFormSubmit.addEventListener("click", (e) => {
   addBookToLibrary(...recoverNewBookFormData());
 
   clearTable(myBooksTableBody);
-  addBooksToTable(myBooksTableBody, myLibrary);
+  fillTable(myBooksTableBody, myLibrary);
 
   e.preventDefault();
 });
