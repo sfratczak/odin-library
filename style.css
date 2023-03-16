@@ -127,3 +127,30 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+:root {
+  --clr-orange-400: #fb923c;
+  --clr-main-orange-500: #f97316;
+  --clr-orange-600: #ea580c;
+  --clr-orange-700: #c2410c;
+  --clr-red-300: #fca5a5;
+  --clr-red-500: #ef4444;
+  --clr-neutral-50: #fafafa;
+  --clr-neutral-100: #f5f5f5;
+  --clr-neutral-200: #e5e5e5;
+  --clr-neutral-300: #d4d4d4;
+  --clr-neutral-800: #262626;
+  --clr-neutral-900: #171717;
+  --clr-github: #24292f;
+}
+
+body {
+  background-color: var(--clr-neutral-50);
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+}
