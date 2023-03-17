@@ -29,7 +29,8 @@ function clearTable(table) {
 }
 
 function deleteBookFromLibrary() {
-  const bookIndex = this.parentNode.getAttribute("data-index-number");
+  const bookIndex =
+    this.parentNode.parentNode.getAttribute("data-index-number");
 
   removeArrayItem(myLibrary, bookIndex);
 
