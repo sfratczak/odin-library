@@ -47,9 +47,8 @@ function fillTable(table, library) {
     deleteButton.setAttribute("headers", "remove-book");
     deleteButton.addEventListener("click", deleteBookFromLibrary);
 
-    const deleteButtonCell = document
-      .createElement("td")
-      .appendChild(deleteButton);
+    const deleteButtonCell = document.createElement("td");
+    deleteButtonCell.appendChild(deleteButton);
 
     const tableRowElements = [deleteButtonCell];
 
