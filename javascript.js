@@ -39,6 +39,22 @@ function deleteBookFromLibrary() {
   fillTable(myBooksTableBody, myLibrary);
 }
 
+function addHoverRowClasses() {
+  const tableRows = myBooksTableBody.childNodes;
+
+  tableRows.forEach((row) => {
+    const deleteButton = row.firstChild.firstChild;
+
+    row.addEventListener("mouseover", () => {
+      deleteButton.classList.add("removebutton-hoverrow");
+    });
+
+    row.addEventListener("mouseleave", () => {
+      deleteButton.classList.remove("removebutton-hoverrow");
+    });
+  });
+}
+
 function fillTable(table, library) {
   library.forEach((book) => {
     const bookObjectValues = Object.values(book);
@@ -66,6 +82,8 @@ function fillTable(table, library) {
 
     table.appendChild(tableRow);
   });
+
+  addHoverRowClasses();
 }
 
 function recoverNewBookFormData() {
