@@ -262,3 +262,20 @@ header nav a:hover:not(.nav-selected) {
 .table-mybooks > tbody > tr > td:nth-child(2) {
   font-weight: 600;
 }
+
+.delete-button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.delete-button-hoverrow {
+  background: url(./img/delete-hoverrow.png) no-repeat;
+}
+
+.delete-button-hoverrow:hover {
+  background: url(./img/delete-hover.png) no-repeat;
+}

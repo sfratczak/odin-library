@@ -46,11 +46,11 @@ function addHoverRowClasses() {
     const deleteButton = row.firstChild.firstChild;
 
     row.addEventListener("mouseover", () => {
-      deleteButton.classList.add("removebutton-hoverrow");
+      deleteButton.classList.add("delete-button-hoverrow");
     });
 
     row.addEventListener("mouseleave", () => {
-      deleteButton.classList.remove("removebutton-hoverrow");
+      deleteButton.classList.remove("delete-button-hoverrow");
     });
   });
 }
@@ -61,7 +61,7 @@ function fillTable(table, library) {
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
-    deleteButton.setAttribute("headers", "remove-book");
+    deleteButton.setAttribute("headers", "delete-book");
     deleteButton.addEventListener("click", deleteBookFromLibrary);
 
     const deleteButtonCell = document.createElement("td");
