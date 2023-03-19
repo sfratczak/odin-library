@@ -300,7 +300,7 @@ input[type="checkbox"]:not(:checked) {
   background: url(./img/notread-checkmark-default.png) no-repeat center;
 }
 
-input[type="checkbox"]:not(:checked):hover {
+input[type="checkbox"].read-button-hoverrow:not(:checked):hover {
   background: url(./img/notread-checkmark-hover.png) no-repeat center;
 }
 
