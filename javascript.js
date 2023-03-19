@@ -39,6 +39,33 @@ function deleteBookFromLibrary() {
   fillTable(myBooksTableBody, myLibrary);
 }
 
+function createDeleteButtonCell() {
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.setAttribute("headers", "delete-book");
+  deleteButton.addEventListener("click", deleteBookFromLibrary);
+
+  const deleteButtonCell = document.createElement("td");
+  deleteButtonCell.appendChild(deleteButton);
+
+  return deleteButtonCell;
+}
+
+function createReadStatusCheckboxCell(book) {
+  const readStatusCheckbox = document.createElement("input");
+  readStatusCheckbox.setAttribute("type", "checkbox");
+  readStatusCheckbox.checked = book.read;
+  readStatusCheckbox.addEventListener("click", () => {
+    // eslint-disable-next-line no-param-reassign
+    book.read = readStatusCheckbox.checked;
+  });
+
+  const readStatusCheckboxCell = document.createElement("td");
+  readStatusCheckboxCell.appendChild(readStatusCheckbox);
+
+  return readStatusCheckboxCell;
+}
+
 function addHoverRowClasses() {
   const tableRows = myBooksTableBody.childNodes;
 
@@ -62,35 +89,19 @@ function fillTable(table, library) {
   library.forEach((book) => {
     const bookObjectValues = Object.values(book);
 
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.setAttribute("headers", "delete-book");
-    deleteButton.addEventListener("click", deleteBookFromLibrary);
+    const tableRowElements = [createDeleteButtonCell()];
 
-    const deleteButtonCell = document.createElement("td");
-    deleteButtonCell.appendChild(deleteButton);
+    for (let i = 0; i < bookObjectValues.length; i += 1) {
+      if (i === bookObjectValues.length - 1) {
+        // Add the read status checkbox cell as the last element
+        tableRowElements.push(createReadStatusCheckboxCell(book));
+      } else {
+        const element = document.createElement("td");
+        element.textContent = `${bookObjectValues[i]}`;
 
-    const tableRowElements = [deleteButtonCell];
-
-    for (let i = 0; i < bookObjectValues.length - 1; i += 1) {
-      const element = document.createElement("td");
-      element.textContent = `${bookObjectValues[i]}`;
-
-      tableRowElements.push(element);
+        tableRowElements.push(element);
+      }
     }
-
-    const readStatusCheckbox = document.createElement("input");
-    readStatusCheckbox.setAttribute("type", "checkbox");
-    readStatusCheckbox.checked = book.read;
-    readStatusCheckbox.addEventListener("click", () => {
-      // eslint-disable-next-line no-param-reassign
-      book.read = readStatusCheckbox.checked;
-    });
-
-    const readStatusCheckboxCell = document.createElement("td");
-    readStatusCheckboxCell.appendChild(readStatusCheckbox);
-
-    tableRowElements.push(readStatusCheckboxCell);
 
     const tableRow = document.createElement("tr");
     tableRow.setAttribute("data-index-number", library.indexOf(book));
