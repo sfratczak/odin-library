@@ -44,13 +44,16 @@ function addHoverRowClasses() {
 
   tableRows.forEach((row) => {
     const deleteButton = row.firstChild.firstChild;
+    const readButton = row.lastChild.firstChild;
 
     row.addEventListener("mouseover", () => {
       deleteButton.classList.add("delete-button-hoverrow");
+      readButton.classList.add("read-button-hoverrow");
     });
 
     row.addEventListener("mouseleave", () => {
       deleteButton.classList.remove("delete-button-hoverrow");
+      readButton.classList.remove("read-button-hoverrow");
     });
   });
 }
@@ -69,12 +72,25 @@ function fillTable(table, library) {
 
     const tableRowElements = [deleteButtonCell];
 
-    for (let i = 0; i < bookObjectValues.length; i += 1) {
+    for (let i = 0; i < bookObjectValues.length - 1; i += 1) {
       const element = document.createElement("td");
       element.textContent = `${bookObjectValues[i]}`;
 
       tableRowElements.push(element);
     }
+
+    const readStatusCheckbox = document.createElement("input");
+    readStatusCheckbox.setAttribute("type", "checkbox");
+    readStatusCheckbox.checked = book.read;
+    readStatusCheckbox.addEventListener("click", () => {
+      // eslint-disable-next-line no-param-reassign
+      book.read = readStatusCheckbox.checked;
+    });
+
+    const readStatusCheckboxCell = document.createElement("td");
+    readStatusCheckboxCell.appendChild(readStatusCheckbox);
+
+    tableRowElements.push(readStatusCheckboxCell);
 
     const tableRow = document.createElement("tr");
     tableRow.setAttribute("data-index-number", library.indexOf(book));
