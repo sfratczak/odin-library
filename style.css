@@ -158,7 +158,8 @@ body {
   margin: auto;
   padding: 0 40px;
   display: grid;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 80px 1fr 80px;
+  height: 100vh;
 }
 
 header {
@@ -414,4 +415,23 @@ input[type="checkbox"].read-button-hoverrow:not(:checked) {
 
 .modal-content > .modal-submit > label:hover {
   background-color: var(--clr-orange-600);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.my-github a {
+  color: var(--clr-github);
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: max-content 30px;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.my-github a img {
+  width: 30px;
 }
