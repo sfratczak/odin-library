@@ -131,6 +131,7 @@ table {
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;600&display=swap");
 
 :root {
+  --clr-orange-100: #ffedd5;
   --clr-orange-400: #fb923c;
   --clr-main-orange-500: #f97316;
   --clr-orange-600: #ea580c;
@@ -306,4 +307,27 @@ input[type="checkbox"].read-button-hoverrow:not(:checked):hover {
 
 input[type="checkbox"].read-button-hoverrow:not(:checked) {
   background: url(./img/notread-checkmark-hoverrow.png) no-repeat center;
+}
+
+.container-addnew-button {
+  display: flex;
+  justify-content: end;
+}
+
+.container-addnew-button > .addnew-mybooks {
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 2px solid var(--clr-main-orange-500);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--clr-main-orange-500);
+  padding: 0.5rem 0.7rem;
+  margin: 0.5rem 1.63rem;
+}
+
+.container-addnew-button > .addnew-mybooks:hover {
+  background-color: var(--clr-orange-100);
 }
