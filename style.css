@@ -156,6 +156,7 @@ body {
 .container {
   max-width: 1200px;
   margin: auto;
+  padding: 0 40px;
   display: grid;
   grid-template-rows: 80px 1fr;
 }
