@@ -1,9 +1,15 @@
 const myBooksTableBody = document.querySelector("tbody");
-const newBookFormSubmit = document.getElementById("newbook-submit");
+
 const newBookModal = document.getElementById("modal-addbook");
 const newBookModalOpenButtons = document.querySelectorAll(".addnew-mybooks");
-const newBookModalSubmitButton =
-  document.querySelector(".modal-submit").firstChild;
+
+const newBookFormTitle = document.getElementById("newbook-title");
+const newBookFormAuthor = document.getElementById("newbook-author");
+const newBookFormGenre = document.getElementById("newbook-genre");
+const newBookFormPages = document.getElementById("newbook-pages");
+const newBookFormRead = document.getElementById("newbook-read");
+const newBookFormSubmit = document.getElementById("newbook-submit");
+
 const myLibrary = [];
 
 function Book(title, author, genre, pages, read) {
@@ -118,26 +124,33 @@ function fillTable(table, library) {
 }
 
 function recoverNewBookFormData() {
-  const newBookFormTitleVal = document.getElementById("newbook-title").value;
-  const newBookFormAuthorVal = document.getElementById("newbook-author").value;
-  const newBookFormGenreVal = document.getElementById("newbook-genre").value;
-  const newBookFormPagesVal = document.getElementById("newbook-pages").value;
-  const newBookFormReadBool = document.getElementById("newbook-read").checked;
-
   const newBookData = [
-    newBookFormTitleVal,
-    newBookFormAuthorVal,
-    newBookFormGenreVal,
-    newBookFormPagesVal,
-    newBookFormReadBool,
+    newBookFormTitle.value,
+    newBookFormAuthor.value,
+    newBookFormGenre.value,
+    newBookFormPages.value,
+    newBookFormRead.checked,
   ];
 
   return newBookData;
 }
 
+function clearNewBookFormData() {
+  [
+    newBookFormTitle,
+    newBookFormAuthor,
+    newBookFormGenre,
+    newBookFormPages,
+    // eslint-disable-next-line no-return-assign
+  ].forEach((e) => (e.value = ""));
+
+  newBookFormRead.checked = true;
+}
+
 newBookFormSubmit.addEventListener("click", (e) => {
   addBookToLibrary(...recoverNewBookFormData());
 
+  clearNewBookFormData();
   clearTable(myBooksTableBody);
   fillTable(myBooksTableBody, myLibrary);
 
@@ -154,6 +167,7 @@ newBookModalOpenButtons.forEach((button) => {
 
 window.onclick = (e) => {
   if (e.target === newBookModal) {
+    clearNewBookFormData();
     newBookModal.style.display = "none";
   }
 };
