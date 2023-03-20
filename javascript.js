@@ -1,5 +1,9 @@
 const myBooksTableBody = document.querySelector("tbody");
 const newBookFormSubmit = document.getElementById("newbook-submit");
+const newBookModal = document.getElementById("modal-addbook");
+const newBookModalOpenButtons = document.querySelectorAll(".addnew-mybooks");
+const newBookModalSubmitButton =
+  document.querySelector(".modal-submit").firstChild;
 const myLibrary = [];
 
 function Book(title, author, genre, pages, read) {
@@ -137,5 +141,19 @@ newBookFormSubmit.addEventListener("click", (e) => {
   clearTable(myBooksTableBody);
   fillTable(myBooksTableBody, myLibrary);
 
+  newBookModal.style.display = "none";
+
   e.preventDefault();
 });
+
+newBookModalOpenButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    newBookModal.style.display = "grid";
+  });
+});
+
+window.onclick = (e) => {
+  if (e.target === newBookModal) {
+    newBookModal.style.display = "none";
+  }
+};
