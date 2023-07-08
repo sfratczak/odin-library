@@ -12,12 +12,14 @@ const newBookFormSubmit = document.getElementById("newbook-submit");
 
 const myLibrary = [];
 
-function Book(title, author, genre, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.genre = genre;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, genre, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 function addBookToLibrary(title, author, genre, pages, read) {
